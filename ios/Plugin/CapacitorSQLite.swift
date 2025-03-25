@@ -309,7 +309,7 @@ enum CapacitorSQLiteError: Error {
                 throw CapacitorSQLiteError.failed(message: "database \(databasePath) does not exist")
             }
             let mDb: Database = try Database(
-                databaseLocation: databaseLocation,
+                databaseLocation: "",
                 databaseName: databasePath,
                 encrypted: false, isEncryption: isEncryption, account: account,
                 mode: "no-encryption", version: version, readonly: true,

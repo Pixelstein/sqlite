@@ -71,14 +71,18 @@ class Database {
             self.path = databaseName
             self.ncDB = true
         } else {
-            do {
-                self.path = try UtilsFile.getFilePath(
-                    databaseLocation: databaseLocation,
-                    fileName: databaseName)
-            } catch UtilsFileError.getFilePathFailed {
-                throw DatabaseError.filePath(
-                    message: "Could not generate the file path")
-            }
+			if (databaseLocation == "") {
+				self.path = databaseName
+			} else {
+				do {
+					self.path = try UtilsFile.getFilePath(
+						databaseLocation: databaseLocation,
+						fileName: databaseName)
+				} catch UtilsFileError.getFilePathFailed {
+					throw DatabaseError.filePath(
+						message: "Could not generate the file path")
+				}
+			}
         }
         print("database path \(self.path)")
     }
