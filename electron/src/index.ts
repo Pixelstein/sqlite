@@ -1297,6 +1297,8 @@ export class CapacitorSQLite implements CapacitorSQLitePlugin {
 		try {
 			const stat = await fs.stat(databasePath)
 
+			console.log('isNCDatabase', stat);
+
 			if (!stat || !stat.isFile()) {
 				return { result: false }
 			}
