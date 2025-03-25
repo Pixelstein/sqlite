@@ -6275,6 +6275,7 @@ class CapacitorSQLite {
         const { databasePath } = options;
         try {
             const stat = await promises_1.default.stat(databasePath);
+            console.log('isNCDatabase', stat);
             if (!stat || !stat.isFile()) {
                 return { result: false };
             }
